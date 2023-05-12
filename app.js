@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const connectDB = require('./config/db');
@@ -18,6 +19,9 @@ if(process.env.NODE_DEV === 'development') {
 // Handlebars
 app.engine('.hbs',exphbs.engine({ defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
+
+// static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 app.use('/', require('./routes/index'));

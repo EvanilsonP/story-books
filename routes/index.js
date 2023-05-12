@@ -3,7 +3,9 @@ const router = express.Router();
 
 // @desc     Login / landing page
 router.get('/', (req, res) => {
-    res.render('Login');
+    res.render('Login', {
+        layout: 'login'
+    });
 });
 // @desc     Login / dashboard
 router.get('/dashboard', (req, res) => {
